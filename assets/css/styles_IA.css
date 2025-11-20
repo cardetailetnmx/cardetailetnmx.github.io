@@ -1,0 +1,366 @@
+/* Estilos base para Car Detailent - diseñado según referencia
+   Sólo CSS (sin fuentes externas). Coloca las imágenes en assets/img/ */
+:root {
+  --bg: #1d1f22;
+  --panel: #27292c;
+  --muted: #bfc3c7;
+  --gold: #e1b84a;
+  --accent: #f2c94c;
+  --glass: rgba(255, 255, 255, 0.04);
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: #eee;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.header-inner{
+  padding: 10px 28px !important;
+}
+.logo{
+  text-align: center;
+}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px;
+}
+.site-header {
+  background: transparent;
+  z-index: 10;
+  position: relative;
+}
+.hero{
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 7%) 100%),url(../img/principal_mobile2.png);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      top: -4em;
+}
+.logo-text {
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+.logo-sub {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* HERO */
+.hero {
+  padding: 4em 0;
+}
+.hero-inner {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 520px;
+  gap: 30px;
+  align-items: center;
+}
+.hero-content {
+  flex: 1;
+  max-width: 560px;
+}
+.hero-title {
+  font-size: 36px;
+  line-height: 1.05;
+  margin: 0 0 16px;
+  font-weight: 700;
+}
+.hero-notice {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--gold), #c99f2e);
+  color: #111;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+.hero-features {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 22px;
+  color: var(--muted);
+}
+.hero-features li {
+  margin: 8px 0;
+}
+.hero-features li::before{
+  content: "\2713"; /* Código Unicode para la palomita (✓) */
+    color: #FFC700; /* Asigna el color dorado/amarillo de tu marca */
+    font-weight: bold;
+    display: inline-block;
+    width: 1em; /* Espacio reservado para la palomita */
+    margin-right: 0.5em; /* Espacio entre la palomita y el texto */
+}
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.btn {
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  text-align: center;
+}
+.btn-primary {
+  background: var(--gold);
+  color: #111;
+}
+.btn-secondary {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.06);
+  color: var(--muted);
+}
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--gold);
+}
+
+.hero-media {
+  width: 520px;
+  flex: 0 0 520px;
+  display: none;
+}
+.hero-meta a{
+  text-decoration: none;
+}
+.car-figure{
+  margin: 0;
+}
+.car-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+}
+
+/* Sección 2 - cards */
+.features {
+  padding: 60px 0;
+  background: #1A1C20;
+}
+.section-title {
+  font-size: 28px;
+  margin: 0 0 24px;
+}
+.cards {
+  display: flex;
+  gap: 20px;
+}
+.cards-3 .card {
+  flex: 1;
+  padding: 28px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 200, 80, 0.06);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+  box-shadow: 0 8px 30px rgba(225, 184, 74, 0.06);
+  position: relative;
+}
+.card-icon {
+  font-size: 36px;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.card-icon .icon {
+  width: 56px;
+  height: 56px;
+  color: var(--gold);
+}
+.card-title {
+  margin: 0 0 8px;
+  color: var(--gold);
+  font-weight: 700;
+}
+.card-text {
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Sección 3 - monitor & packages */
+.packages {
+  padding: 60px 0;
+  background: #17191D;
+}
+.monitor {
+  display: flex;
+  justify-content: center;
+}
+.monitor-screen {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.6));
+  padding: 28px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.6);
+}
+.package-cards {
+  display: flex;
+  gap: 18px;
+}
+.pkg {
+  flex: 1;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(225, 184, 74, 0.12);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.015), transparent);
+}
+.pkg-title {
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 10px;
+}
+.pkg-list {
+  color: var(--muted);
+  margin: 0 0 12px;
+  padding-left: 18px;
+}
+.pkg-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  gap: 1em;
+  flex-direction: column;
+}
+.pkg-price {
+  background: var(--gold);
+  color: #111;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* Sección 4 - galería */
+.gallery {
+  padding: 60px 0;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.compare {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+.compare img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+.compare .img-after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  clip-path: inset(0 50% 0 0);
+  transition: clip-path 0.4s ease;
+}
+.compare:hover .img-after {
+  clip-path: inset(0 0 0 0);
+}
+.divider {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--gold), #c99f2e);
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.divider span {
+  writing-mode: vertical-rl;
+  color: #111;
+  background: var(--gold);
+  padding: 6px;
+  border-radius: 6px;
+  transform: rotate(180deg);
+  font-weight: 700;
+}
+.gallery-cta {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Footer */
+.site-footer {
+  padding: 24px 0;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .hero-inner {
+    grid-template-columns: 1fr 420px;
+  }
+  .hero-media {
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-title {
+    font-size: 24px;
+  }
+  .card-icon .icon {
+    width: 48px;
+    height: 48px;
+  }
+}
+@media (max-width: 900px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+  .hero-media {
+    order: 2;
+  }
+  .hero-content {
+    order: 1;
+  }
+  .cards {
+    flex-direction: column;
+  }
+  .package-cards {
+    flex-direction: column;
+  }
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
