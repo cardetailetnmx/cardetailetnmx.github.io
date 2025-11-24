@@ -56,27 +56,149 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
-header {
-  background-color: #161519;
-  padding: 1em 0;
-  color: #ffff;
-  box-shadow: 0px 20px 20px 5px rgb(18 11 11 / 56%);
+/* 2. ESTILOS DEL ENCABEZADO (HEADER) */
+.header {
+  background-color: #1f1f1f;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: min(100%, 90em);
+  margin: auto;
 }
 
-.header-contenido {
-  width: min(80%, 1100px);
-  margin: auto;
-  display: grid;
-  grid-auto-flow: column;
+.logo{
+  display: flex;
+  gap: 1em;
   align-items: center;
+}
+.name_buss{
+  /* text-transform: uppercase;
+  color: #fff;
+  font-size: 1.5em; */
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+  text-shadow: 1px 4px 4px rgb(0 0 0);
+    letter-spacing: 1px; /* Añadir un poco de espacio para profesionalismo */
 }
 
 .logo img {
-  width: 4em;
+  height: 50px; /* Ajusta según tu logo */
   border-radius: 50%;
   aspect-ratio: 1;
-  box-shadow: 0px 11px 20px 5px rgba(118, 118, 118, 0.118);
+}
+
+.main-menu ul {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.main-menu ul li a {
+  text-decoration: none;
+}
+
+/* 3. MENÚ HAMBURGUESA (Ícono) */
+.menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 24px;
+  width: 30px;
+  padding: 0;
+  z-index: 200; /* Asegura que esté por encima del menú */
+}
+
+.bar {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out; /* Animación de las barras */
+}
+
+/* 4. ANIMACIÓN DE HAMBURGUESA A "X" */
+/* Cuando el header tiene la clase 'menu-open', aplicamos la transformación */
+.header.menu-open .bar:nth-child(1) {
+  transform: translateY(10.5px) rotate(45deg);
+}
+
+.header.menu-open .bar:nth-child(2) {
+  opacity: 0; /* Barra del medio se oculta */
+}
+
+.header.menu-open .bar:nth-child(3) {
+  transform: translateY(-10.5px) rotate(-45deg);
+}
+
+/* 5. MENÚ DESPLEGABLE (NAV) */
+.main-menu {
+  /* Posicionamiento y tamaño del menú */
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%; /* Ocupa toda la pantalla en móvil */
+  background-color: #1f1f1f;
+
+  /* 👈 Animación: Desliza desde la derecha y se hace transparente */
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 0.4s ease-out, opacity 0.3s ease-out;
+
+  padding-top: 80px; /* Espacio para el header */
+  z-index: 150;
+  overflow-y: auto; /* Scroll si el contenido es largo */
+}
+
+/* 6. ESTADO ABIERTO */
+.header.menu-open .main-menu {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* 7. ESTILOS DE LOS ENLACES */
+.main-menu ul {
+  list-style: none;
+}
+
+.main-menu ul li a {
+  display: block;
+  padding: 15px 40px;
+  color: #fff;
+  font-size: 18px;
+  text-transform: uppercase;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.main-menu ul li a:hover {
+  color: #c59f5963; /* Texto dorado al pasar el cursor */
+  background-color: #c59f5963;
+}
+
+/* 8. ESTILO DEL BOTÓN CTA (AGENDAR CITA) */
+.cta-item {
+  padding: 15px 40px;
+  margin-top: 10px;
+}
+
+.cta-button {
+  background-color: #c5a059; /* Fondo dorado */
+  color: #ffffffb9 !important; 
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-align: center;
+  display: block;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
 }
 
 /* icono del menu */
@@ -94,11 +216,13 @@ header {
   background-color: #161519;
   top: 6em;
   right: 0;
-  width: 10em;
+  width: fit-content;
   padding: 1em;
   text-align: center;
   box-shadow: 0px 20px 20px 5px rgb(18 11 11 / 56%);
   border-radius: 0 0 0 15px;
+  z-index: 1;
+  backdrop-filter: blur(5px); /* Efecto desenfoque moderno */
 }
 
 .nav-toggle {
@@ -156,13 +280,19 @@ header {
 }
 
 .list__menu--element {
-  margin-top: 1rem;
+  padding: 15px 25px; /* Más aire para los elementos */
 }
 
 .list__menu--element a {
   color: #fff;
   text-transform: uppercase;
   text-decoration: none;
+}
+
+.list__menu--element a:hover,
+.list__menu--element a.activo {
+  color: #c5a059; /* Texto dorado al pasar el cursor */
+  background-color: #2b2b2b; /* Fondo sutilmente más claro para el hover */
 }
 
 .list__menu--secundary {
@@ -176,39 +306,406 @@ header {
   border-radius: 100px;
 }
 
+.cta-menu a {
+  display: block;
+  background-color: #c5a059; /* Fondo dorado */
+  color: #1f1f1f !important; /* Texto oscuro para alto contraste */
+  padding: 12px 20px;
+  border-radius: 8px; /* Bordes suaves */
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
 main {
-  width: min(80%, 1100px);
+  width:min(95%, 90em);
   margin: auto;
   display: grid;
-  gap: 2em;
+  gap: 10em;
 }
 
-.l-principal{
-    margin-block: 2em;
+.l-principal {
+  min-height: 100vh;
+  display: grid;
+  align-items: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../img/cardetailet.gif);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.c-inicio{
-    display: grid;
-    gap: 1.5em;
-    text-align: center;
+.c-inicio {
+  display: grid;
+  gap: 1.5em;
+  text-align: center;
+  align-items: center;
+  justify-items: center;
+  color: #ffff;
+}
+.titulo_inicio {
+  line-height: 1;
+  text-transform: uppercase;
+  text-shadow: -2px 8px 4px rgb(0 0 0);
+}
+
+.agenda_cita {
+  text-decoration: none;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 0.5em 2em;
+  background-color: #d9ad44;
+  font-weight: 700;
+  border-radius: 0.5em;
+  max-width: 15em;
+}
+
+.agenda_cita:hover{
+    transition: background-color 0.2s, color 0.2s;
+  background-color: #c59f5963;
+
+}
+
+.l-propuesta_valor {
+  display: grid;
+  gap: 1em;
+}
+
+.articulo {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1.5em;
+  padding: 1em;
+  justify-items: center;
+  align-items: center;
+  background: #ffffff2f;
+  border-radius: 15px;
+  font-size: 0.8em;
+}
+
+.iconos_imagen {
+  max-width: 5em;
+}
+
+.descripcion_articulo {
+  color: #fff;
+}
+.texto_articulo {
+  opacity: 0.5;
+  margin-block: 1em;
+}
+
+.l-servicios {
+  display: grid;
+  gap: 1em;
+}
+.articulos_servicios {
+  display: grid;
+  gap: 1em;
+  background-color: #ffffff15;
+  padding: 1em;
+  border: 1px solid #d9ad44;
+  border-radius: 15px;
+  box-shadow: -1px 3px 12px 0px #d9ad445e;
+  justify-items: center;
+  align-content: space-between;
+}
+.titulo_articulo--servicio {
+  text-transform: uppercase;
+  color: #d9ad44;
+  text-align: center;
+  font-size: 1.3em;
+}
+ul.lista_servicio {
+  list-style: none;
+  padding: 0;
+  color: #fff;
+}
+ul.lista_servicio li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 0.1em;
+  font-family: sans-serif;
+}
+ul.lista_servicio li::before {
+  content: "✔";
+  position: relative;
+  left: -0.5em;
+  top: 0;
+  color: #c5a059;
+  font-size: 18px;
+}
+
+.btn_servicio {
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+  background-color: #d9ad44;
+  border-radius: 10px;
+  padding: 0.5em 2em;
+}
+
+.btn_servicio:hover{
+  transition: all 0.3s;
+  background-color: #d9ac4464;
+}
+
+.l-resultados {
+  display: grid;
+  gap: 1em;
+}
+.c-resultados {
+  display: grid;
+  justify-items: center;
+  gap: 1em;
+}
+.titulo_resultados {
+  text-align: center;
+  color: #ffff;
+}
+
+/* Estilos del contenedor del Swiper */
+.swiper {
+  width: 100%;
+  max-width: 1000px;
+  padding: 50px 0px;
+}
+
+.swiper-slide {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+  align-content: center;
+}
+
+/* Efecto Hover: Sube un poquito cuando pasas el mouse */
+.swiper-slide:hover {
+  transform: translateY(-5px);
+}
+
+/* Estilo de la imagen */
+.swiper-slide img {
+  display: block;
+  width: auto;
+  height: auto; /* Altura fija para uniformidad */
+  object-fit: cover; /* Recorta la imagen para que no se deforme */
+  cursor: zoom-in;
+}
+
+/* Personalización de los botones de navegación (Flechas) */
+.swiper-button-next,
+.swiper-button-prev {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 20px !important;
+  font-weight: bold;
+}
+
+/* Paginación (puntos abajo) */
+.swiper-pagination-bullet-active {
+  background-color: #c5a059 !important;
+}
+
+.btn_agenda {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  text-align: center;
+  background-color: #d9ad44;
+  border-radius: 10px;
+  padding: 0.5em 2em;
+}
+.btn_agenda:hover{
+  transition: all 0.3s;
+  background-color: #d9ac4464;
+}
+/* 1. Estilos Base del Footer */
+.footer {
+  width: min(100%, 90em);
+  margin: auto;
+  background-color: #1f1f1f; /* Fondo oscuro elegante */
+  color: #cccccc; /* Texto gris claro */
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+  margin-block-start: 1.5em;
+  box-shadow: 0 10px 20px rgb(0, 0, 0);
+}
+
+/* 2. Contenedor Principal (Usando Flexbox o Grid para modernidad) */
+.footer-container {
+  display: flex;
+  flex-wrap: wrap; /* Para que se adapte bien en móvil */
+  justify-content: space-around;
+  max-width: 1200px;
+  margin: 0 auto; /* Centrar el contenido */
+  padding-bottom: 20px;
+}
+
+/* 3. Estilos de las Secciones */
+.footer-section {
+  margin-bottom: 30px;
+  min-width: 180px; /* Asegurar que no se colapse */
+}
+
+.footer-section h4 {
+  color: #ffffff;
+  font-size: 16px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  border-left: 3px solid #c5a059; /* Toque elegante con línea dorada */
+  padding-left: 8px;
+}
+
+/* 4. Estilos de los Enlaces */
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  color: #cccccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+/* Efecto Hover Dorado */
+.footer-section ul li a:hover {
+  color: #c5a059; /* Color de acento dorado */
+}
+
+/* 5. Pie de página Inferior (Legal y Copyright) */
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #333333; /* Línea divisoria sencilla */
+  font-size: 12px;
+  color: #888888;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Adaptación a Móvil (Responsive) */
+@media (max-width: 600px) {
+  .footer-container {
+    flex-direction: column;
     align-items: center;
-    color: #ffff;
-}
-.titulo_inicio{
-    line-height: 1;
-    text-transform: uppercase;
-    text-shadow: -2px 8px 4px rgb(0 0 0);
-}
-.slogan_inicio{
-    opacity: 0.5;
+    text-align: center;
+  }
+  .footer-section h4 {
+    border-left: none; /* Quitamos la línea dorada si el texto está centrado */
+    padding-left: 0;
+  }
 }
 
-.agenda_cita{
-    text-decoration: none;
-    color: #fff;
-    text-transform: uppercase;
-    padding: 0.5em 2em;
-    background-color: #D9AD44;
-    font-weight: 700;
-    border-radius: 0.5em;
+/* SweetAlert */
+.swal2-popup-custom {
+  background-color: #333333;
+}
+.swal2-title-custom {
+  color: #ffffff;
+}
+.tabla-precios {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 14px;
+  text-align: left;
+}
+.tabla-precios th {
+  background-color: transparent;
+  color: #ffffff;
+  padding: 10px;
+  border-bottom: 2px solid #c5a059; /* Toque dorado */
+}
+.tabla-precios td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  color: #ffffff;
+}
+.resaltado-servicio {
+  font-weight: bold;
+  color: #ffffff;
+  background-color: transparent;
+  padding: 8px;
+  margin-top: 15px;
+  display: block;
+  text-align: center;
+}
+.precio-dorado {
+  color: #c5a059;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+@media screen and (min-width: 48em) {
+  .l-servicios,
+  .l-propuesta_valor {
+    grid-auto-flow: column;
+  }
+  .articulo {
+    grid-auto-flow: row;
+  }
+}
+@media screen and (min-width: 52em) {
+  /* 1. OCULTAR BOTÓN HAMBURGUESA */
+  .menu-toggle {
+    display: none;
+  }
+
+  /* 2. RECONFIGURAR EL MENÚ PRINCIPAL */
+  .main-menu {
+    /* Vuelve a la posición normal (ya no es fixed/fullscreen) */
+    position: static;
+    height: auto;
+    width: auto;
+
+    /* Deshace la animación de deslizamiento y la opacidad */
+    transform: translateX(0);
+    opacity: 1;
+
+    /* Quita el padding superior que era para esquivar el header en móvil */
+    padding-top: 0;
+
+    /* Alinea los elementos a la derecha del header */
+    margin-left: auto;
+  }
+
+  /* 3. ALINEAR LOS ENLACES HORIZONTALMENTE */
+  .main-menu ul {
+    display: flex; /* Convierte los <li> en elementos horizontales */
+    align-items: center;
+    gap: 15px; /* Espacio entre cada enlace */
+  }
+
+  .main-menu ul li {
+    /* Asegura que los enlaces no tengan márgenes raros */
+    margin-bottom: 0;
+  }
+
+  /* 4. AJUSTAR EL ESTILO DE LOS ENLACES Y EL CTA */
+  .main-menu ul li a {
+    padding: 8px 10px; /* Padding más pequeño y profesional para escritorio */
+  }
+
+  /* Ajuste específico para que el CTA siga viéndose como botón pero integrado */
+  .cta-item {
+    padding: 0; /* Quita el padding grande que tenía en móvil */
+    margin-top: 0;
+  }
+
+  .cta-button {
+    /* Asegura que el botón se vea bien al lado de los enlaces */
+    padding: 8px 15px;
+  }
 }
