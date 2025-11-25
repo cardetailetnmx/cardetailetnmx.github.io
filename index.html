@@ -1,261 +1,333 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Car Detailent</title>
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <!-- <script src="https://kit.fontawesome.com/04c63a223f.js" crossorigin="anonymous"></script> -->
+    <title>Car Detailents | Detallado Automotriz Premium en Toluca</title>
+    <meta
+      name="description"
+      content="Detallado automotriz a domicilio en Toluca. Estética premium, lavado de interiores, pulido y descontaminación. Sin costo extra por servicio a domicilio."
+    />
 
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Open+Sans:wght@400;600&display=swap"
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css"
-    />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script
+      src="https://kit.fontawesome.com/04c63a223f.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <header class="header">
-        <div class="logo">
-            <a href="#" class="logo"
-          ><img src="assets/img/logo.png" alt="LOGO"
-        /></a><h1 class="name_buss">CAR DETAILENT</h1>
-        </div>
-
-        <button class="menu-toggle" aria-controls="main-menu" aria-expanded="false">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </button>
-
-        <nav class="main-menu" id="main-menu">
-            <ul>
-                <li><a href="#">INICIO</a></li>
-                <li><a href="#servicios">SERVICIOS</a></li>
-                <li><a href="#contacto">CONTACTO</a></li>
-                
-                <li class="cta-item">
-                    <a href="#" class="cta-button">AGENDAR CITA</a>
-                </li>
-            </ul>
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">CAR <span>DETAILENT</span></div>
+          <div class="hamburger" id="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+          <ul class="nav-links" id="nav-links">
+            <li><a href="#hero">Inicio</a></li>
+            <li><a href="#services">Paquetes</a></li>
+            <li><a href="#pricing">Precios</a></li>
+            <li><a href="#gallery">Galería</a></li>
+            <li><a href="#testimonials">Testimonios</a></li>
+            <li>
+              <a
+                href="https://wa.me/7221086732?text=Hola!%20Me%20gustaria%20agendar%20un%20servicio"
+                class="btn btn-primary"
+                style="padding: 8px 20px; color: black"
+                >Agendar</a
+              >
+            </li>
+          </ul>
         </nav>
+      </div>
     </header>
 
-    <main>
-      <section class="l-principal" >
-        <div class="c-inicio" data-aos="fade-up">
-          <h1 class="titulo_inicio">Dale a tu auto el lujo que se merece</h1>
-            <p class="slogan_inicio descripcion"><span id="typed-text"></span></p>
-          
-          <!-- <p class="slogan_inicio">
-            Olvídate de las esperas. Tu auto impecable, donde estés.
-          </p> -->
-          <a href="#" class="agenda_cita">Agenda tu cita</a>
+    <section id="hero">
+      <div class="container hero-content reveal">
+        <h1>TRANSFORMAMOS<br /><span>CADA DETALLE</span></h1>
+        <p><span id="typed-text"></span></p>
+        <a
+          href="https://wa.me/7221086732?text=Hola!%20Me%20gustaria%20agendar%20un%20servicio"
+          class="btn btn-primary"
+          >Agendar Cita Ahora</a
+        >
+      </div>
+    </section>
+
+    <section id="benefits">
+      <div class="container">
+        <h2 class="section-title reveal">¿Por qué Nosotros?</h2>
+        <p class="section-subtitle reveal">Llevamos la estética a tu hogar</p>
+
+        <div class="benefits-grid">
+          <article class="benefit-card reveal">
+            <div class="benefit-icon">🏠</div>
+            <h3>A Domicilio</h3>
+            <p>
+              Vamos hasta tu casa u oficina. No pierdas tiempo en el tráfico.
+            </p>
+          </article>
+          <article class="benefit-card reveal">
+            <div class="benefit-icon">💲</div>
+            <h3>Sin Costo Extra</h3>
+            <p>El servicio a domicilio viene incluido en el precio.</p>
+          </article>
+          <article class="benefit-card reveal">
+            <div class="benefit-icon">⚡</div>
+            <h3>Equipo Propio</h3>
+            <p>Llevamos luz, agua, herramientas y productos premium.</p>
+          </article>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="l-propuesta_valor" id="servicios">
-        <article class="articulo" data-aos="fade-right">
-          <div class="imagen">
-            <img src="assets/img/car.png" alt="" class="iconos_imagen" />
-          </div>
-          <div class="descripcion_articulo">
-            <h2 class="titulo_articulo">Servicio a Domicilio gratis</h2>
-            <p class="texto_articulo">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero
-              mollitia, facilis quos corporis, quasi aliquam recusandae placeat
-              veniam a, quia fugiat numquam consequatur doloremque beatae?
-            </p>
-          </div>
-        </article>
-        <article class="articulo" data-aos="fade-down">
-          <div class="imagen">
-            <img src="assets/img/neumatico.png" alt="" class="iconos_imagen" />
-          </div>
-          <div class="descripcion_articulo">
-            <h2 class="titulo_articulo">Cuidado de llantas y rines premium</h2>
-            <p class="texto_articulo">
-              Cuidado de llantas y rines premium Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Quas, optio? Optio laudantium ipsum,
-              soluta sunt ex iste? Ipsam natus voluptas libero, rem dolores.
-            </p>
-          </div>
-        </article>
-        <article class="articulo" data-aos="fade-left">
-          <div class="imagen">
-            <img src="assets/img/servicio.png" alt="" class="iconos_imagen" />
-          </div>
-          <div class="descripcion_articulo">
-            <h2 class="titulo_articulo">Calidad detallada</h2>
-            <p class="texto_articulo">
-              Productos premium y técnicas profesionales para protección
-              duradera
-            </p>
-          </div>
-        </article>
-      </section>
+    <section id="services">
+      <div class="container">
+        <h2 class="section-title reveal">Nuestros Paquetes</h2>
+        <p class="section-subtitle reveal">Renueva tu auto por completo</p>
 
-      <section class="l-servicios">
-        <article class="articulos_servicios" data-aos="flip-down">
-          <h3 class="titulo_articulo--servicio">Interior</h3>
-          <ul class="lista_servicio">
-            <li class="list_elemento--servicio">Asientos</li>
-            <li class="list_elemento--servicio">Alfombra</li>
-            <li class="list_elemento--servicio">Cielo</li>
-            <li class="list_elemento--servicio">Cinturónes</li>
-            <li class="list_elemento--servicio">Cajuela</li>
-            <li class="list_elemento--servicio">Plasticos</li>
-            <li class="list_elemento--servicio">Tapetes de tela y plastico</li>
-            <li class="list_elemento--servicio">
-              Eliminación de olores por ozono
-            </li>
-            <li class="list_elemento--servicio">Lavado exprés de carrocería</li>
-          </ul>
-          <a href="" onclick="precios();" class="btn_servicio">Lista de precios</a>
-        </article>
-        <article class="articulos_servicios" data-aos="flip-down">
-          <h3 class="titulo_articulo--servicio">Exterior</h3>
-          <ul class="lista_servicio">
-            <li class="list_elemento--servicio">Motor</li>
-            <li class="list_elemento--servicio">Carrocería</li>
-            <li class="list_elemento--servicio">Tolvas</li>
-            <li class="list_elemento--servicio">Rines</li>
-            <li class="list_elemento--servicio">Faros</li>
-            <li class="list_elemento--servicio">Cristales</li>
-            <li class="list_elemento--servicio">
-              Pulido de pintura 3 en 1 con protección de 12 meses
-            </li>
-            <li class="list_elemento--servicio">
-              Desconta de pintura química y mecánicamente
-            </li>
-            <li class="list_elemento--servicio">
-              Restauración de plasticos externos
-            </li>
-          </ul>
-          <a href=""  onclick="precios();" class="btn_servicio">Lista de precios</a>
-        </article>
-        <article class="articulos_servicios" data-aos="flip-down">
-          <h3 class="titulo_articulo--servicio">Completo</h3>
-          <ul class="lista_servicio">
-            <li class="list_elemento--servicio">Incluye ambos paquetes</li>
-          </ul>
-          <a href=""  onclick="precios();" class="btn_servicio">Lista de precios</a>
-        </article>
-      </section>
+        <div class="packages-grid">
+          <article class="package-card reveal">
+            <div class="package-header">
+              <h3>INTERIOR</h3>
+              <p style="color: #888; margin-top: 5px">Limpieza profunda</p>
+            </div>
+            <div class="package-body">
+              <ul class="package-list">
+                <li>Asientos (Lavado profundo)</li>
+                <li>Alfombra y Cielo</li>
+                <li>Cinturones de seguridad</li>
+                <li>Cajuela completa</li>
+                <li>Plásticos y vinilos</li>
+                <li>Tapetes de tela y plástico</li>
+                <li>Eliminación de olores</li>
+                <li>Lavado exprés de carrocería</li>
+              </ul>
+            </div>
+          </article>
 
-      <section class="l-resultados" id="resultados">
-        <div class="c-resultados"  data-aos="flip-left"
-     data-aos-easing="ease-out-cubic"
-     data-aos-duration="1000">
-          <h3 class="titulo_resultados">
-            Nuestros Resultados hablan por si solos
-          </h3>
-          <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
+          <article class="package-card reveal">
+            <div class="package-header">
+              <h3>EXTERIOR</h3>
+              <p style="color: #888; margin-top: 5px">Protección y brillo</p>
+            </div>
+            <div class="package-body">
+              <ul class="package-list">
+                <li>Lavado de Motor</li>
+                <li>Descontaminación</li>
+                <li>Limpieza de Tolvas y Rines</li>
+                <li>Pulido de Faros y Cristales</li>
+                <li>Pulido de pintura 3 en 1</li>
+                <li>Protección de 12 meses</li>
+                <li>Restauración plásticos ext.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="package-card highlight reveal">
+            <div class="package-header">
+              <h3>COMPLETO</h3>
+              <p style="color: #888; margin-top: 5px">La experiencia total</p>
+            </div>
+            <div class="package-body">
+              <ul class="package-list">
+                <li style="color: white; font-weight: bold">
+                  Todo paquete INTERIOR
+                </li>
+                <li style="color: white; font-weight: bold">
+                  Todo paquete EXTERIOR
+                </li>
+                <li>Ahorro en precio combinado</li>
+                <li>Máxima plusvalía</li>
+              </ul>
+              <div style="text-align: center; margin-top: 2rem">
                 <a
-                  href="assets\img\principal_desktop.png"
-                  class="glightbox"
+                  href="https://wa.me/7221086732?text=Hola!%20Me%20gustaria%20agendar%20un%20servicio"
+                  class="btn btn-primary"
+                  >Lo quiero todo</a
                 >
-                  <img
-                    src="assets\img\principal_desktop.png"
-                    alt="Resultado"
-                  />
-                </a>
-              </div>
-
-              <div class="swiper-slide">
-                <a
-                  href="assets\img\principal_mobile.png"
-                  class="glightbox"
-                >
-                  <img
-                    src="assets\img\principal_mobile.png"
-                    alt="Resultado"
-                  />
-                </a>
-              </div>
-
-              <div class="swiper-slide">
-                <a
-                  href="assets\img\principal_mobile2.png"
-                  class="glightbox"
-                >
-                  <img
-                    src="assets\img\principal_mobile2.png"
-                    alt="Resultado"
-                  />
-                </a>
-              </div>
-
-              <div class="swiper-slide">
-                <a
-                  href="assets/img/Gemini_Generated_Image_67fkq267fkq267fk.png"
-                  class="glightbox"
-                >
-                  <img
-                    src="assets/img/Gemini_Generated_Image_67fkq267fkq267fk.png"
-                    alt="Resultado"
-                  />
-                </a>
               </div>
             </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-            <div class="swiper-button-next">
-              <img src="assets/img/flecha-derecha.png" alt="row" />
-            </div>
-            <div class="swiper-button-prev">
-              <img src="assets/img/flecha-izquierda.png" alt="row" />
-            </div>
-            <div class="swiper-pagination"></div>
+    <section id="pricing">
+      <div class="container">
+        <h2 class="section-title reveal">Precios</h2>
+        <p class="section-subtitle reveal">Transparencia total</p>
+
+        <div class="pricing-table-container reveal">
+          <table>
+            <thead>
+              <tr>
+                <th>Vehículo</th>
+                <th>Interior</th>
+                <th>Exterior</th>
+                <th>Pulido (2P)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Sedán / Hatchback</strong></td>
+                <td>$1,100</td>
+                <td>$1,100</td>
+                <td>$1,500</td>
+              </tr>
+              <tr>
+                <td><strong>SUV / Mediana</strong></td>
+                <td>$1,200</td>
+                <td>$1,200</td>
+                <td>$1,600</td>
+              </tr>
+              <tr>
+                <td><strong>Camioneta XL</strong></td>
+                <td>$1,350</td>
+                <td>$1,350</td>
+                <td>$1,750</td>
+              </tr>
+              <tr>
+                <td><strong>Camioneta XXL</strong></td>
+                <td>$1,400</td>
+                <td>$1,400</td>
+                <td>$1,900</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <h2 class="section-title reveal">Resultados</h2>
+        <p class="section-subtitle reveal">Antes y después</p>
+
+        <div class="gallery-grid">
+          <div class="gallery-item reveal">
+            <img
+              src="https://placehold.co/600x400/222/FFF?text=Antes+y+Despues"
+              alt="Limpieza de asientos"
+            />
+            <div class="gallery-caption">Restauración de tapicería</div>
           </div>
-          <a href="#" class="btn_agenda">Agenda tu cita</a>
+          <div class="gallery-item reveal">
+            <img
+              src="https://placehold.co/600x400/222/FFF?text=Pulido+Espejo"
+              alt="Pulido de pintura"
+            />
+            <div class="gallery-caption">Corrección de pintura</div>
+          </div>
+          <div class="gallery-item reveal">
+            <img
+              src="https://placehold.co/600x400/222/FFF?text=Lavado+Motor"
+              alt="Detallado de motor"
+            />
+            <div class="gallery-caption">Detallado de motor</div>
+          </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
 
-    <footer class="footer" id="contacto">
-    <div class="footer-container">
-        
-        <div class="footer-section brand">
-            <h4>CAR DETAILENT</h4>
-            <p>Servicios de estética automotriz a domicilio.</p>
-            <p>Contacto:</p>
-            <p>Tel: +52 722 108 6732</p>
-            <p>Email: cardetailetnmx@gmail.com</p>
+    <section id="testimonials">
+        <div class="container">
+            <h2 class="section-title reveal">La voz de nuestros clientes</h2>
+            <p class="section-subtitle reveal">Calidad y confianza comprobada en Toluca.</p>
+
+            <div class="testimonials-grid">
+                
+                <article class="testimonial-card reveal">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-quote">
+                        "Excelente servicio, atención de primera, muy atentos a los detalles y excelente relación de precio calidad, ofreciendo un servicio de calidad con excelentes productos!! Recomendable 100 % 👍🏻"
+                    </p>
+                    <strong class="testimonial-author">Jorge Wilson Tejera</strong>
+                    <span class="testimonial-source">/ Cliente verificado</span>
+                </article>
+
+                <article class="testimonial-card reveal">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-quote">
+                        "Excelente todo desde la puntualidad, equipamiento y calidad de productos. Es un placer tratar con profesionales que cuidan el tiempo del cliente."
+                    </p>
+                    <strong class="testimonial-author">Alejandro Gaytan</strong>
+                    <span class="testimonial-source">/ Cliente verificado</span>
+                </article>
+
+                <article class="testimonial-card reveal">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-quote">
+                        "Excelente atención, precios accesibles y todo de calidad, sin dudas regresaría. El mejor detallado a domicilio que he probado. 😎"
+                    </p>
+                    <strong class="testimonial-author">Gerardo Martínez</strong>
+                    <span class="testimonial-source">/ Cliente verificado</span>
+                </article>
+
+                <article class="testimonial-card reveal">
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-quote">
+                        "Buena atención, buen servicio, buenos precios y cumplen con la promesa de comodidad. Mi auto quedó como nuevo sin salir de casa. ☝️"
+                    </p>
+                    <strong class="testimonial-author">Big Travel</strong>
+                    <span class="testimonial-source">/ Cliente verificado</span>
+                </article>
+
+            </div>
         </div>
+    </section>
 
-        <div class="footer-section links">
-            <h4>Navegación</h4>
-            <ul>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#resultados">Resultados</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+    <footer id="contact">
+      <div class="container">
+        <div class="footer-content">
+          <div style="flex: 1">
+            <h3 class="logo">CAR <span>DETAILENT</span></h3>
+            <p style="margin-top: 1rem; color: #aaa; font-size: 0.9rem">
+              Expertos en detallado automotriz a domicilio en Toluca y la zona Metropolitana.
+            </p>
+          </div>
+          <div style="flex: 1">
+            <h4>Contacto</h4>
+            <ul style="margin-top: 1rem; color: #aaa; font-size: 0.9rem">
+              <li style="margin-bottom: 0.5rem">📍 Toluca, EdoMex</li>
+              <li>📞 +52 7221086732</li>
+              <li>📞 +52 7221092519</li>
             </ul>
-        </div>
-
-        <!-- <div class="footer-section social">
-            <h4>Información Legal</h4>
-            <ul>
-                <li><a href="#privacidad">Aviso de Privacidad</a></li>
-                <li><a href="#terminos">Términos y Condiciones</a></li>
+            <ul class="redes-sociales">
+              <li><a href="https://www.tiktok.com/@cardetailent?_r=1&_t=ZS-91XFusGxrcO" class="redes_sociales--enlace"><i class="fa-brands fa-tiktok" ></i></a></li>
+              <li><a href="https://www.facebook.com/share/1Ft8JhVCS6/" class="redes_sociales--enlace"><i class="fa-brands fa-facebook"></i></a></li>
+              <li><a href="https://www.instagram.com/car.detailent?igsh=MXNxZ2N0dHNmZmxqeQ==" class="redes_sociales--enlace"><i class="fa-brands fa-instagram" ></i></a></li>
             </ul>
-        </div> -->
+          </div>
+        </div>
+        <div class="copyright">&copy; 2025 Car Detailent.</div>
+      </div>
+    </footer>
 
-    </div>
+    <a
+      href="https://wa.me/7221086732?text=Hola!%20Me%20gustaria%20agendar%20un%20servicio"
+      class="whatsapp-float"
+      target="_blank"
+      aria-label="Chat en WhatsApp"
+      ><i class="fa-brands fa-whatsapp"></i
+    ></a>
 
-    <div class="footer-bottom">
-        <p>&copy; 2025 CAR DETAILENT. Todos los derechos reservados.</p>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      // Inicializar animaciones aos
+      AOS.init();
+    </script>
   </body>
 </html>

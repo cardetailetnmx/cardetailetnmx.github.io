@@ -1,10 +1,40 @@
 
-  AOS.init();
-  
-  
-  var typed = new Typed("#typed-text", {
+
+// Menu Móvil
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+const links = document.querySelectorAll('.nav-links li');
+
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    hamburger.classList.toggle('toggle');
+});
+
+links.forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('toggle');
+    });
+});
+
+// Scroll Reveal
+const revealElements = document.querySelectorAll('.reveal');
+const revealCallback = (entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+        }
+    });
+};
+const revealObserver = new IntersectionObserver(revealCallback, { threshold: 0.1 });
+revealElements.forEach(el => revealObserver.observe(el));
+
+
+
+// typed de inicio
+ var typed = new Typed("#typed-text", {
     strings: [
-        "Olvídate de las esperas. Tu auto impecable, donde estés.",
+        "El detallado automotriz premium que va hasta tu domicilio en Toluca. Sin costo extra, porque tu tiempo es valioso.",
     ],
     typeSpeed: 30, // Velocidad de escritura
     startDelay: 1000, // Retraso antes de empezar a escribir
@@ -13,150 +43,31 @@
     loop: false, // No repetir la animación
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const header = document.querySelector('.header');
+// sweetalert
+// Selecciona todos los enlaces que contengan 'wa.me' en su href
+const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
 
-    menuToggle.addEventListener('click', function () {
-        // Alterna la clase 'menu-open' en el header
-        header.classList.toggle('menu-open');
+whatsappLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault(); // Evita que el enlace abra la página inmediatamente
+        const targetUrl = this.href;
 
-        // Maneja la accesibilidad: actualiza el estado del botón
-        const isExpanded = this.getAttribute('aria-expanded') === 'true' || false;
-        this.setAttribute('aria-expanded', !isExpanded);
-    });
-
-    // Opcional: Cierra el menú cuando se hace clic en un enlace
-    const menuLinks = document.querySelectorAll('.main-menu a');
-    menuLinks.forEach(link => {
-        link.addEventListener('click', function () {
-            if (header.classList.contains('menu-open')) {
-                header.classList.remove('menu-open');
-                menuToggle.setAttribute('aria-expanded', 'false');
+        Swal.fire({
+            title: '¿Contactar al negocio?',
+            text: "Saldrás de la página para abrir WhatsApp y agendar tu cita con Car Detailents.",
+            icon: 'info',
+            iconColor: '#FFC107', // Ícono color ámbar
+            showCancelButton: true,
+            confirmButtonText: 'SÍ, CONTACTAR',
+            cancelButtonText: 'CANCELAR',
+            reverseButtons: true, // Pone el botón de acción a la derecha
+            focusConfirm: false,
+            backdrop: `rgba(0,0,0,0.8)` // Fondo oscuro detrás de la alerta
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Si el usuario acepta, abre el enlace en una nueva pestaña
+                window.open(targetUrl, '_blank');
             }
         });
     });
 });
-
-
-
-// Configuración del Carrusel (Swiper)
-var swiper = new Swiper(".mySwiper", {
-    slidesPerView: 1, // Cuántos se ven en celular
-    spaceBetween: 20, // Espacio entre fotos
-    loop: true, // Infinito (vuelve al inicio)
-    grabCursor: true, // Manita al pasar el mouse
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-    },
-    pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-    },
-    // Responsive: cambia según el tamaño de pantalla
-    breakpoints: {
-        300: {
-            slidesPerView: 1, // Tablet: se ven 2
-        },
-        640: {
-            slidesPerView: 2, // Tablet: se ven 2
-        },
-        1024: {
-            slidesPerView: 3, // PC: se ven 3
-        },
-    },
-});
-
-// Configuración del Zoom (GLightbox)
-const lightbox = GLightbox({
-    touchNavigation: true,
-    loop: true,
-    autoplayVideos: true,
-});
-
-
-function precios() {
-
-    // Prevenimos que el enlace vaya a la parte superior de la página
-
-    // ----------------------------------------------------
-    // 🛠️ CONTENIDO HTML DE LA TABLA DE PRECIOS 🛠️
-    // ----------------------------------------------------
-    const contenidoHTML = `
-                    
-
-                    <h4 style="margin-top: -10px; color: #333;">Precios por Tipo de Vehículo</h4>
-
-                    <span class="resaltado-servicio">INTERIOR / EXTERIOR</span>
-                    <table class="tabla-precios">
-                        <thead>
-                            <tr>
-                                <th>Vehículo</th>
-                                <th style="text-align: right;">Precio</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>SEDAN Y HATCHBACK</td>
-                                <td style="text-align: right;"><span class="precio-dorado">$1,100</span></td>
-                            </tr>
-                            <tr>
-                                <td>SUV Y MEDIANA</td>
-                                <td style="text-align: right;"><span class="precio-dorado">$1,200</span></td>
-                            </tr>
-                            <tr>
-                                <td>CAMIONETA XL</td>
-                                <td style="text-align: right;"><span class="precio-dorado">$1,350</span></td>
-                            </tr>
-                            <tr>
-                                <td>CAMIONETA XXL</td>
-                                <td style="text-align: right;"><span class="precio-dorado">$1,400</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <span class="resaltado-servicio" style="margin-top: 25px;">PULIDO A 2 PASOS</span>
-                    <table class="tabla-precios">
-                        <thead>
-                            <tr>
-                                <th>Vehículo</th>
-                                <th style="text-align: right;">Precio</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>SEDAN Y HATCHBACK</td>
-                                <td style="text-align: right;"><span class="precio-dorado">$1,500</span></td>
-                            </tr>
-                            <tr>
-                                <td>SUV Y MEDIANA</td>
-                                <td style="text-align: right;"><span class="precio-dorado">$1,600</span></td>
-                            </tr>
-                            <tr>
-                                <td>CAMIONETA XL</td>
-                                <td style="text-align: right;"><span class="precio-dorado">$1,750</span></td>
-                            </tr>
-                            <tr>
-                                <td>CAMIONETA XXL</td>
-                                <td style="text-align: right;"><span class="precio-dorado">$1,900</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                `;
-    // ----------------------------------------------------
-
-    // Disparamos la alerta de SweetAlert2
-    Swal.fire({
-        title: 'LISTA DE PRECIOS DETALLADA',
-        html: contenidoHTML,
-        icon: '', // Puedes usar 'success', 'warning', 'error', 'info', 'question'
-        showCloseButton: true,
-        confirmButtonText: 'Cerrar',
-        confirmButtonColor: '#C5A059', // Botón de confirmación dorado
-        customClass: {
-            popup: 'swal2-popup-custom',
-            title: 'swal2-title-custom'
-        }
-    });
-}

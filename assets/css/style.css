@@ -1,711 +1,628 @@
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
-  font-family: "Segoe UI", " Roboto", "Helvetica Neue", Arial;
+/* --- VARIABLES & RESET --- */
+:root {
+  --primary-color: #ffc107;
+  --primary-hover: #ffa000;
+  --bg-dark: #0a0a0a;
+  --bg-card: #141414;
+  --bg-overlay: rgba(0, 0, 0, 0.653);
+  --text-light: #f5f5f5;
+  --text-gray: #a0a0a0;
+  --border-color: #333;
+  --transition: all 0.3s ease-in-out;
+  --spacing-section: 4rem;
 }
 
-html:focus-within {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
   scroll-behavior: smooth;
+  overflow-x: hidden; /* CORRECCIÓN: Previene scroll horizontal */
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  line-height: 1.6;
+  overflow-x: hidden; /* CORRECCIÓN: Asegura que nada se salga del ancho */
+  width: 100%;
 }
 
 h1,
 h2,
 h3,
-h4,
-p,
-body {
-  margin: 0;
+h4 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: white;
 }
 
-input,
-button,
-textarea,
-select {
-  font: inherit;
+a {
+  text-decoration: none;
+  color: inherit;
 }
-
-a:not([class]) {
-  text-decoration-skip-ink: auto;
+ul {
+  list-style: none;
 }
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::after,
-  *::before {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-  html:focus-within {
-    scroll-behavior: auto;
-  }
-}
-
 img {
   max-width: 100%;
   display: block;
 }
 
-body {
-  min-height: 100vh;
-  text-rendering: optimizeSpeed;
-  background: linear-gradient(180grad, #4c4c4c, #010101);
-  background-image: url("../img/fondo.png");
-  background-repeat: no-repeat;
-  background-size: cover;
+/* --- UTILITIES --- */
+.container {
+  width: 100%; /* Ajuste para móviles */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px; /* Padding seguro */
 }
-/* 2. ESTILOS DEL ENCABEZADO (HEADER) */
-.header {
-  background-color: #1f1f1f;
+
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  border-radius: 5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: var(--transition);
+  cursor: pointer;
+  border: 2px solid transparent;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: black;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.2rem; /* Ligeramente más pequeño para seguridad */
+  margin-bottom: 1rem;
+  word-wrap: break-word;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 1rem;
+  margin-bottom: 3rem;
+  font-weight: 600;
+}
+
+/* --- ANIMATIONS --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- HEADER --- */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 0;
+}
+
+nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  width: min(100%, 90em);
-  margin: auto;
 }
 
-.logo{
-  display: flex;
-  gap: 1em;
-  align-items: center;
-}
-.name_buss{
-  /* text-transform: uppercase;
-  color: #fff;
-  font-size: 1.5em; */
-    font-size: 24px;
-    font-weight: bold;
-    color: #ffffff;
-  text-shadow: 1px 4px 4px rgb(0 0 0);
-    letter-spacing: 1px; /* Añadir un poco de espacio para profesionalismo */
-}
-
-.logo img {
-  height: 50px; /* Ajusta según tu logo */
-  border-radius: 50%;
-  aspect-ratio: 1;
-}
-
-.main-menu ul {
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
-.main-menu ul li a {
-  text-decoration: none;
-}
-
-/* 3. MENÚ HAMBURGUESA (Ícono) */
-.menu-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 24px;
-  width: 30px;
-  padding: 0;
-  z-index: 200; /* Asegura que esté por encima del menú */
-}
-
-.bar {
-  display: block;
-  width: 100%;
-  height: 3px;
-  background-color: #ffffff;
-  border-radius: 3px;
-  transition: all 0.3s ease-in-out; /* Animación de las barras */
-}
-
-/* 4. ANIMACIÓN DE HAMBURGUESA A "X" */
-/* Cuando el header tiene la clase 'menu-open', aplicamos la transformación */
-.header.menu-open .bar:nth-child(1) {
-  transform: translateY(10.5px) rotate(45deg);
-}
-
-.header.menu-open .bar:nth-child(2) {
-  opacity: 0; /* Barra del medio se oculta */
-}
-
-.header.menu-open .bar:nth-child(3) {
-  transform: translateY(-10.5px) rotate(-45deg);
-}
-
-/* 5. MENÚ DESPLEGABLE (NAV) */
-.main-menu {
-  /* Posicionamiento y tamaño del menú */
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: 100%; /* Ocupa toda la pantalla en móvil */
-  background-color: #1f1f1f;
-
-  /* 👈 Animación: Desliza desde la derecha y se hace transparente */
-  transform: translateX(100%);
-  opacity: 0;
-  transition: transform 0.4s ease-out, opacity 0.3s ease-out;
-
-  padding-top: 80px; /* Espacio para el header */
-  z-index: 150;
-  overflow-y: auto; /* Scroll si el contenido es largo */
-}
-
-/* 6. ESTADO ABIERTO */
-.header.menu-open .main-menu {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-/* 7. ESTILOS DE LOS ENLACES */
-.main-menu ul {
-  list-style: none;
-}
-
-.main-menu ul li a {
-  display: block;
-  padding: 15px 40px;
-  color: #fff;
-  font-size: 18px;
-  text-transform: uppercase;
-  transition: background-color 0.2s, color 0.2s;
-}
-
-.main-menu ul li a:hover {
-  color: #c59f5963; /* Texto dorado al pasar el cursor */
-  background-color: #c59f5963;
-}
-
-/* 8. ESTILO DEL BOTÓN CTA (AGENDAR CITA) */
-.cta-item {
-  padding: 15px 40px;
-  margin-top: 10px;
-}
-
-.cta-button {
-  background-color: #c5a059; /* Fondo dorado */
-  color: #ffffffb9 !important; 
-  padding: 12px 20px;
-  border-radius: 8px;
-  font-weight: 700;
-  text-align: center;
-  display: block;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
-}
-
-/* icono del menu */
-
-.nav {
-  width: 100%;
-  visibility: hidden;
-  height: 0;
-}
-
-.nav--visible {
-  visibility: visible;
-  height: auto;
-  position: absolute;
-  background-color: #161519;
-  top: 6em;
-  right: 0;
-  width: fit-content;
-  padding: 1em;
-  text-align: center;
-  box-shadow: 0px 20px 20px 5px rgb(18 11 11 / 56%);
-  border-radius: 0 0 0 15px;
-  z-index: 1;
-  backdrop-filter: blur(5px); /* Efecto desenfoque moderno */
-}
-
-.nav-toggle {
-  cursor: pointer;
-  border: 0;
-  width: 3em;
-  height: 3em;
-  padding: 0em;
-  border-radius: 50%;
-  background: transparent;
+.logo {
+  font-size: 1.4rem;
+  font-weight: 800;
   color: white;
-  transition: opacity 250ms ease;
-
-  position: absolute;
-  right: 2em;
+  /* z-index: 1001; Asegurar que el logo esté sobre el menú móvil */
 }
 
-.nav-toggle:focus,
-.nav-toggle:hover {
-  opacity: 0.75;
+.logo span {
+  color: var(--primary-color);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
 }
 
 .hamburger {
-  width: 50%;
-  position: relative;
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  z-index: 1001; /* Botón sobre el menú */
 }
 
-.hamburger,
-.hamburger::before,
-.hamburger::after {
-  display: block;
-  margin: 0 auto;
+.bar {
+  width: 25px;
   height: 3px;
-  background: white;
+  background-color: white;
+  transition: var(--transition);
 }
 
-.hamburger::before,
-.hamburger::after {
-  content: "";
-  width: 100%;
+.hamburger.toggle .bar:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+.hamburger.toggle .bar:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.toggle .bar:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
 }
 
-.hamburger::before {
-  transform: translateY(-6px);
-}
+/* --- HERO SECTION --- */
+#hero {
+  min-height: 100vh; /* min-height es mejor para evitar cortes en landscape */
+  background: linear-gradient(var(--bg-overlay), var(--bg-overlay)),
+    url("../img/principal_desktop.png");
 
-.hamburger::after {
-  transform: translateY(3px);
-}
-
-/* lista del nav */
-.list__menu {
-  list-style: none;
-  padding: 0;
-}
-
-.list__menu--element {
-  padding: 15px 25px; /* Más aire para los elementos */
-}
-
-.list__menu--element a {
-  color: #fff;
-  text-transform: uppercase;
-  text-decoration: none;
-}
-
-.list__menu--element a:hover,
-.list__menu--element a.activo {
-  color: #c5a059; /* Texto dorado al pasar el cursor */
-  background-color: #2b2b2b; /* Fondo sutilmente más claro para el hover */
-}
-
-.list__menu--secundary {
-  margin-top: 2rem;
-}
-
-.list__menu-element--buttom {
-  background-color: #a59678;
-  color: #fff;
-  padding: 0.3em 2em;
-  border-radius: 100px;
-}
-
-.cta-menu a {
-  display: block;
-  background-color: #c5a059; /* Fondo dorado */
-  color: #1f1f1f !important; /* Texto oscuro para alto contraste */
-  padding: 12px 20px;
-  border-radius: 8px; /* Bordes suaves */
-  text-align: center;
-  margin-top: 20px;
-  font-weight: bold;
-}
-
-main {
-  width:min(95%, 90em);
-  margin: auto;
-  display: grid;
-  gap: 10em;
-}
-
-.l-principal {
-  min-height: 100vh;
-  display: grid;
-  align-items: center;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(../img/cardetailet.gif);
-  background-position: top;
-  background-repeat: no-repeat;
   background-size: cover;
-}
-
-.c-inicio {
-  display: grid;
-  gap: 1.5em;
-  text-align: center;
-  align-items: center;
-  justify-items: center;
-  color: #ffff;
-}
-.titulo_inicio {
-  line-height: 1;
-  text-transform: uppercase;
-  text-shadow: -2px 8px 4px rgb(0 0 0);
-}
-
-.agenda_cita {
-  text-decoration: none;
-  color: #fff;
-  text-transform: uppercase;
-  padding: 0.5em 2em;
-  background-color: #d9ad44;
-  font-weight: 700;
-  border-radius: 0.5em;
-  max-width: 15em;
-}
-
-.agenda_cita:hover{
-    transition: background-color 0.2s, color 0.2s;
-  background-color: #c59f5963;
-
-}
-
-.l-propuesta_valor {
-  display: grid;
-  gap: 1em;
-}
-
-.articulo {
-  display: grid;
-  grid-auto-flow: column;
-  gap: 1.5em;
-  padding: 1em;
-  justify-items: center;
-  align-items: center;
-  background: #ffffff2f;
-  border-radius: 15px;
-  font-size: 0.8em;
-}
-
-.iconos_imagen {
-  max-width: 5em;
-}
-
-.descripcion_articulo {
-  color: #fff;
-}
-.texto_articulo {
-  opacity: 0.5;
-  margin-block: 1em;
-}
-
-.l-servicios {
-  display: grid;
-  gap: 1em;
-}
-.articulos_servicios {
-  display: grid;
-  gap: 1em;
-  background-color: #ffffff15;
-  padding: 1em;
-  border: 1px solid #d9ad44;
-  border-radius: 15px;
-  box-shadow: -1px 3px 12px 0px #d9ad445e;
-  justify-items: center;
-  align-content: space-between;
-}
-.titulo_articulo--servicio {
-  text-transform: uppercase;
-  color: #d9ad44;
-  text-align: center;
-  font-size: 1.3em;
-}
-ul.lista_servicio {
-  list-style: none;
-  padding: 0;
-  color: #fff;
-}
-ul.lista_servicio li {
-  position: relative;
-  padding-left: 30px;
-  margin-bottom: 0.1em;
-  font-family: sans-serif;
-}
-ul.lista_servicio li::before {
-  content: "✔";
-  position: relative;
-  left: -0.5em;
-  top: 0;
-  color: #c5a059;
-  font-size: 18px;
-}
-
-.btn_servicio {
-  text-decoration: none;
-  color: #fff;
-  text-align: center;
-  background-color: #d9ad44;
-  border-radius: 10px;
-  padding: 0.5em 2em;
-}
-
-.btn_servicio:hover{
-  transition: all 0.3s;
-  background-color: #d9ac4464;
-}
-
-.l-resultados {
-  display: grid;
-  gap: 1em;
-}
-.c-resultados {
-  display: grid;
-  justify-items: center;
-  gap: 1em;
-}
-.titulo_resultados {
-  text-align: center;
-  color: #ffff;
-}
-
-/* Estilos del contenedor del Swiper */
-.swiper {
-  width: 100%;
-  max-width: 1000px;
-  padding: 50px 0px;
-}
-
-.swiper-slide {
-  position: relative;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease;
-  align-content: center;
-}
-
-/* Efecto Hover: Sube un poquito cuando pasas el mouse */
-.swiper-slide:hover {
-  transform: translateY(-5px);
-}
-
-/* Estilo de la imagen */
-.swiper-slide img {
-  display: block;
-  width: auto;
-  height: auto; /* Altura fija para uniformidad */
-  object-fit: cover; /* Recorta la imagen para que no se deforme */
-  cursor: zoom-in;
-}
-
-/* Personalización de los botones de navegación (Flechas) */
-.swiper-button-next,
-.swiper-button-prev {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-}
-
-.swiper-button-next:after,
-.swiper-button-prev:after {
-  font-size: 20px !important;
-  font-weight: bold;
-}
-
-/* Paginación (puntos abajo) */
-.swiper-pagination-bullet-active {
-  background-color: #c5a059 !important;
-}
-
-.btn_agenda {
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #fff;
-  text-align: center;
-  background-color: #d9ad44;
-  border-radius: 10px;
-  padding: 0.5em 2em;
-}
-.btn_agenda:hover{
-  transition: all 0.3s;
-  background-color: #d9ac4464;
-}
-/* 1. Estilos Base del Footer */
-.footer {
-  width: min(100%, 90em);
-  margin: auto;
-  background-color: #1f1f1f; /* Fondo oscuro elegante */
-  color: #cccccc; /* Texto gris claro */
-  padding: 40px 20px;
-  font-family: Arial, sans-serif;
-  margin-block-start: 1.5em;
-  box-shadow: 0 10px 20px rgb(0, 0, 0);
-}
-
-/* 2. Contenedor Principal (Usando Flexbox o Grid para modernidad) */
-.footer-container {
+  background-repeat: no-repeat;
+  background-position: center;
   display: flex;
-  flex-wrap: wrap; /* Para que se adapte bien en móvil */
-  justify-content: space-around;
-  max-width: 1200px;
-  margin: 0 auto; /* Centrar el contenido */
-  padding-bottom: 20px;
-}
-
-/* 3. Estilos de las Secciones */
-.footer-section {
-  margin-bottom: 30px;
-  min-width: 180px; /* Asegurar que no se colapse */
-}
-
-.footer-section h4 {
-  color: #ffffff;
-  font-size: 16px;
-  margin-bottom: 15px;
-  font-weight: 600;
-  border-left: 3px solid #c5a059; /* Toque elegante con línea dorada */
-  padding-left: 8px;
-}
-
-/* 4. Estilos de los Enlaces */
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-section ul li {
-  margin-bottom: 8px;
-}
-
-.footer-section ul li a {
-  color: #cccccc;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-/* Efecto Hover Dorado */
-.footer-section ul li a:hover {
-  color: #c5a059; /* Color de acento dorado */
-}
-
-/* 5. Pie de página Inferior (Legal y Copyright) */
-.footer-bottom {
+  align-items: center;
   text-align: center;
-  padding-top: 20px;
-  border-top: 1px solid #333333; /* Línea divisoria sencilla */
-  font-size: 12px;
-  color: #888888;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 80px 0 40px 0;
 }
 
-/* Adaptación a Móvil (Responsive) */
-@media (max-width: 600px) {
-  .footer-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .footer-section h4 {
-    border-left: none; /* Quitamos la línea dorada si el texto está centrado */
-    padding-left: 0;
-  }
+.hero-content h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  word-break: break-word; /* CORRECCIÓN: Evita desborde de textos largos */
 }
 
-/* SweetAlert */
-.swal2-popup-custom {
-  background-color: #333333;
+.hero-content h1 span {
+  color: var(--primary-color);
+  display: block;
 }
-.swal2-title-custom {
-  color: #ffffff;
+
+.hero-content p {
+  font-size: 1.1rem;
+  color: #ddd;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.tabla-precios {
+
+/* --- GRIDS & CARDS --- */
+#about,
+#benefits,
+#services,
+#gallery,
+#pricing {
+  padding: var(--spacing-section) 0;
+}
+
+#services,
+#gallery {
+  background-color: #0f0f0f;
+}
+
+/* CORRECCIÓN: Grid más flexible para móviles pequeños */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.benefit-card {
+  background-color: var(--bg-card);
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+/* CORRECCIÓN: Ajuste de minmax a 280px o menos para evitar desborde en 300-320px */
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.package-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden; /* Importante para que el contenido no salga */
+  display: flex;
+  flex-direction: column;
+}
+
+.package-card.highlight {
+  border: 1px solid var(--primary-color);
+  box-shadow: 0 0 20px rgba(255, 193, 7, 0.1);
+}
+
+.package-header {
+  background-color: #1a1a1a;
+  padding: 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.package-body {
+  padding: 2rem;
+  flex-grow: 1;
+}
+
+.package-list li {
+  margin-bottom: 0.8rem;
+  color: #ccc;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.package-list li::before {
+  content: "✓";
+  color: var(--primary-color);
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-inline: 0.5em;
+  flex-shrink: 0;
+}
+
+/* --- PRICING TABLE --- */
+.pricing-table-container {
+  overflow-x: auto; /* Scroll interno solo para la tabla */
+  background: var(--bg-card);
+  border-radius: 10px;
+  padding: 1rem;
+  -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+  width: 100%;
+    position: relative; /* Necesario para que el pseudo-elemento ::after se posicione correctamente */
+}
+
+table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 15px;
-  font-size: 14px;
+  min-width: 600px; /* Fuerza el scroll horizontal interno, no rompe la página */
+}
+
+th,
+td {
+  padding: 1rem;
   text-align: left;
+  border-bottom: 1px solid var(--border-color);
 }
-.tabla-precios th {
-  background-color: transparent;
-  color: #ffffff;
-  padding: 10px;
-  border-bottom: 2px solid #c5a059; /* Toque dorado */
+
+th {
+  color: var(--primary-color);
+  font-size: 0.9rem;
 }
-.tabla-precios td {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-  color: #ffffff;
+td {
+  color: #ddd;
+  font-size: 0.9rem;
 }
-.resaltado-servicio {
-  font-weight: bold;
-  color: #ffffff;
-  background-color: transparent;
-  padding: 8px;
-  margin-top: 15px;
-  display: block;
+
+/* Nuevo: Keyframes para la animación de deslizamiento */
+@keyframes scrollNudge {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-10px); } /* Desliza 10px a la izquierda */
+    40% { transform: translateX(5px); } /* Vuelve un poco a la derecha */
+    60% { transform: translateX(-5px); } /* Desliza otra vez */
+    80% { transform: translateX(0); }
+    100% { transform: translateX(0); }
+}
+
+#pricing table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+
+/* Media Query para activar el indicador solo en pantallas pequeñas */
+@media (max-width: 768px) {
+    .pricing-table-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 30px; /* Ancho del fade */
+        
+        /* El degradado va de transparente a tu color de fondo de tarjeta, simulando que el contenido se oculta */
+        /* background: linear-gradient(to left, var(--bg-card), rgba(20, 20, 20, 0));  */
+        
+        pointer-events: none; /* Asegura que la sombra no bloquee el scroll */
+        z-index: 20; /* Asegura que esté sobre la tabla */
+    }
+}
+
+/* --- GALLERY --- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  height: 250px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.5rem;
   text-align: center;
 }
-.precio-dorado {
-  color: #c5a059;
-  font-weight: bold;
-  font-size: 15px;
+
+/* --- CONTACT & FOOTER --- */
+footer {
+        display: grid;
+    justify-content: center;
+
+  background-color: black;
+  padding: 4rem 0 2rem;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
 }
 
-@media screen and (min-width: 48em) {
-  .l-servicios,
-  .l-propuesta_valor {
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.social-icons a {
+  margin: 0 10px;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+.redes-sociales{
+    display: grid;
     grid-auto-flow: column;
+    justify-content: space-evenly;
+
+    margin-top: 1rem; 
+    color: #aaa; 
+    font-size: 1.5rem;
+}
+
+/* --- NUEVA SECCIÓN: TESTIMONIALS --- */
+#testimonials {
+    padding: var(--spacing-section) 0;
+    background-color: #111111; /* Un tono ligeramente diferente para variar la textura */
+}
+
+.testimonials-grid {
+    display: grid;
+    /* Responsive Grid: mínimo de 280px por columna */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 1.5rem;
+}
+
+.testimonial-card {
+    background-color: var(--bg-card); /* Fondo oscuro de tarjeta */
+    padding: 2rem;
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-color); /* Franja de acento dorado/ámbar */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    height: 100%; /* Asegura que todas las tarjetas tengan la misma altura si el grid lo permite */
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.testimonial-quote {
+    font-style: italic;
+    color: #ccc;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.testimonial-rating {
+    color: var(--primary-color);
+    font-size: 1.3rem; /* Estrellas grandes y doradas */
+    margin-bottom: 1rem;
+}
+
+.testimonial-author {
+    font-weight: 800;
+    color: white;
+    display: block;
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+.testimonial-source {
+    font-weight: 400;
+    color: var(--text-gray);
+    font-size: 0.85rem;
+}
+
+
+
+
+/* --- MEDIA QUERIES (Correcciones Responsive) --- */
+@media (max-width: 768px) {
+  #hero {
+    background-size: cover;
+    background-image: linear-gradient(var(--bg-overlay), var(--bg-overlay)),
+      url("../img/principal_mobile.png");
   }
-  .articulo {
-    grid-auto-flow: row;
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed; /* Cambiado de absolute a fixed para mejor control */
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 75%; /* Menú no ocupa toda la pantalla para dar sensación de 'drawer' */
+    background-color: #000;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%); /* Sale por la derecha */
+    transition: transform 0.3s ease-in-out;
+    border-left: 1px solid #333;
+    z-index: 999;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+  }
+
+  .nav-links.active {
+    transform: translateX(0);
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+  .section-title {
+    font-size: 1.8rem;
+  }
+    #pricing table {
+    /* PROPIEDAD DE ANIMACIÓN */
+    animation: scrollNudge 4s ease-in-out 1s infinite; 
+}
+}
+
+/* CORRECCIÓN: Pantallas muy pequeñas (300px - 360px) */
+@media (max-width: 380px) {
+  .container {
+    padding: 0 15px;
+  } /* Menos padding lateral */
+
+  .hero-content h1 {
+    font-size: 1.5rem;
+  } /* Texto más pequeño */
+  .hero-content p{
+    font-size: 1rem;
+  }
+
+  .packages-grid,
+  .benefits-grid,
+  .gallery-grid {
+    grid-template-columns: 1fr; /* Forzar 1 columna al 100% */
+  }
+
+  .benefit-card,
+  .package-body,
+  .package-header {
+    padding: 1.5rem 1rem; /* Reducir padding interno de tarjetas */
   }
 }
-@media screen and (min-width: 52em) {
-  /* 1. OCULTAR BOTÓN HAMBURGUESA */
-  .menu-toggle {
-    display: none;
-  }
 
-  /* 2. RECONFIGURAR EL MENÚ PRINCIPAL */
-  .main-menu {
-    /* Vuelve a la posición normal (ya no es fixed/fullscreen) */
-    position: static;
-    height: auto;
-    width: auto;
+/* sweetalert */
 
-    /* Deshace la animación de deslizamiento y la opacidad */
-    transform: translateX(0);
-    opacity: 1;
+/* Estilos personalizados para que SweetAlert coincida con tu diseño */
+div:where(.swal2-container) div:where(.swal2-popup) {
+  background: #141414 !important; /* Tu color de fondo de tarjetas */
+  border: 1px solid #333;
+  border-radius: 10px;
+}
 
-    /* Quita el padding superior que era para esquivar el header en móvil */
-    padding-top: 0;
+div:where(.swal2-title) {
+  font-family: "Montserrat", sans-serif !important;
+  color: #fff !important;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+}
 
-    /* Alinea los elementos a la derecha del header */
-    margin-left: auto;
-  }
+div:where(.swal2-html-container) {
+  font-family: "Open Sans", sans-serif !important;
+  color: #ccc !important;
+}
 
-  /* 3. ALINEAR LOS ENLACES HORIZONTALMENTE */
-  .main-menu ul {
-    display: flex; /* Convierte los <li> en elementos horizontales */
-    align-items: center;
-    gap: 15px; /* Espacio entre cada enlace */
-  }
+/* Botón de Confirmar (Estilo Premium) */
+div:where(.swal2-actions) button.swal2-confirm {
+  background-color: #ffc107 !important; /* Tu color primario */
+  color: #000 !important;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  border-radius: 5px !important;
+  box-shadow: none !important;
+}
 
-  .main-menu ul li {
-    /* Asegura que los enlaces no tengan márgenes raros */
-    margin-bottom: 0;
-  }
+div:where(.swal2-actions) button.swal2-confirm:hover {
+  background-color: #ffa000 !important;
+  transform: translateY(-2px);
+}
 
-  /* 4. AJUSTAR EL ESTILO DE LOS ENLACES Y EL CTA */
-  .main-menu ul li a {
-    padding: 8px 10px; /* Padding más pequeño y profesional para escritorio */
-  }
+/* Botón de Cancelar */
+div:where(.swal2-actions) button.swal2-cancel {
+  background-color: transparent !important;
+  color: #aaa !important;
+  border: 1px solid #333 !important;
+}
 
-  /* Ajuste específico para que el CTA siga viéndose como botón pero integrado */
-  .cta-item {
-    padding: 0; /* Quita el padding grande que tenía en móvil */
-    margin-top: 0;
-  }
-
-  .cta-button {
-    /* Asegura que el botón se vea bien al lado de los enlaces */
-    padding: 8px 15px;
-  }
+div:where(.swal2-actions) button.swal2-cancel:hover {
+  background-color: #222 !important;
+  color: #fff !important;
 }
