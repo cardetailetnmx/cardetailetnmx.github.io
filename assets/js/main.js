@@ -71,3 +71,24 @@ whatsappLinks.forEach(link => {
         });
     });
 });
+
+// 1. Selecciona TODAS las tarjetas contenedoras.
+const contenedores = document.querySelectorAll('#gallery_container'); 
+
+contenedores.forEach(tarjeta => {
+    
+    // 2. Busca el elemento de texto específico DENTRO de la tarjeta actual
+    const textoEspecifico = tarjeta.querySelector('#gallery-caption');
+
+    // --- AL ENTRAR (MUESTRA) ---
+    tarjeta.addEventListener('mouseenter', () => {
+        // Añade la clase que muestra el texto (ej. quita 'hidden')
+        textoEspecifico.classList.remove("hidden"); 
+    });
+
+    // --- AL SALIR (OCULTA) ---
+    tarjeta.addEventListener('mouseleave', () => {
+        // Añade la clase que oculta el texto
+        textoEspecifico.classList.add("hidden"); 
+    });
+});

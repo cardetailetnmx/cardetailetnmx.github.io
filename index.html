@@ -9,6 +9,8 @@
       content="Detallado automotriz a domicilio en Toluca. Estética premium, lavado de interiores, pulido y descontaminación. Sin costo extra por servicio a domicilio."
     />
 
+    <link rel="shortcut icon" href="assets/img/logo.ico" />.
+
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -86,7 +88,7 @@
           <article class="benefit-card reveal">
             <div class="benefit-icon">⚡</div>
             <h3>Equipo Propio</h3>
-            <p>Llevamos luz, agua, herramientas y productos premium.</p>
+            <p>Llevamos herramientas y productos premium.</p>
           </article>
         </div>
       </div>
@@ -114,6 +116,14 @@
                 <li>Eliminación de olores</li>
                 <li>Lavado exprés de carrocería</li>
               </ul>
+              <p class="time">Duración Estimada del Detallado: 7 a 8 horas.</p>
+              <div style="text-align: center; margin-top: 2rem">
+                <a
+                  href="https://wa.me/7221086732?text=Hola!%20Me%20gustaria%20agendar%20un%20el%20servicio%20INTERIOR"
+                  class="btn btn-primary"
+                  >Agendar</a
+                >
+              </div>
             </div>
           </article>
 
@@ -132,10 +142,45 @@
                 <li>Protección de 12 meses</li>
                 <li>Restauración plásticos ext.</li>
               </ul>
+              <p class="time">Duración Estimada del Detallado: 7 a 8 horas.</p>
+              <div style="text-align: center; margin-top: 2rem">
+                <a
+                  href="https://wa.me/7221086732?text=Hola!%20Me%20gustaria%20agendar%20un%20el%20servicio%20EXTERIOR"
+                  class="btn btn-primary"
+                  >Agendar</a
+                >
+              </div>
             </div>
           </article>
 
           <article class="package-card highlight reveal">
+            <div class="package-header">
+              <h3>PULIDO A 2 PASOS</h3>
+              <p style="color: #888; margin-top: 5px">Mejor experiencia</p>
+            </div>
+            <div class="package-body">
+              <ul class="package-list">
+                <li style="color: white; font-weight: bold">
+                  Todo paquete EXTERIOR
+                </li>
+                <li style="color: white; font-weight: bold">
+                  PULIDO
+                </li>
+                <li style="color: white; font-weight: bold" class="sub-element">Paso 1: Aplicación de puimento de alto corte</li>
+                <li style="color: white; font-weight: bold" class="sub-element">Paso 2: Aplicación de pulimento 3 en 1 para refinar, abrillantar y proteger la pintura</li>
+              </ul>
+              <p class="time">Duración Estimada del Detallado: 7 a 8 horas.</p>
+              <div style="text-align: center; margin-top: 2rem">
+                <a
+                  href="https://wa.me/7221086732?text=Hola!%20Me%20gustaria%20agendar%20un%20el%20servicio%20PULIDO%20A%202%20PASOS"
+                  class="btn btn-primary"
+                  >Lo quiero todo</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <!-- <article class="package-card highlight reveal">
             <div class="package-header">
               <h3>COMPLETO</h3>
               <p style="color: #888; margin-top: 5px">La experiencia total</p>
@@ -159,7 +204,7 @@
                 >
               </div>
             </div>
-          </article>
+          </article> -->
         </div>
       </div>
     </section>
@@ -215,27 +260,27 @@
         <h2 class="section-title reveal">Resultados</h2>
         <p class="section-subtitle reveal">Antes y después</p>
 
-        <div class="gallery-grid">
-          <div class="gallery-item reveal">
+        <div class="gallery-grid" >
+          <div class="gallery-item reveal" id="gallery_container">
             <img
-              src="https://placehold.co/600x400/222/FFF?text=Antes+y+Despues"
+              src="assets/img/Tapizado.gif"
               alt="Limpieza de asientos"
             />
-            <div class="gallery-caption">Restauración de tapicería</div>
+            <div class="gallery-caption hidden" id="gallery-caption">Restauración de tapicería</div>
           </div>
-          <div class="gallery-item reveal">
+          <div class="gallery-item reveal" id="gallery_container">
             <img
-              src="https://placehold.co/600x400/222/FFF?text=Pulido+Espejo"
+              src="assets/img/Pulido.gif"
               alt="Pulido de pintura"
             />
-            <div class="gallery-caption">Corrección de pintura</div>
+            <div class="gallery-caption hidden" id="gallery-caption">Pulido de pintura</div>
           </div>
-          <div class="gallery-item reveal">
+          <div class="gallery-item reveal" id="gallery_container">
             <img
-              src="https://placehold.co/600x400/222/FFF?text=Lavado+Motor"
+              src="assets/img/motor.gif"
               alt="Detallado de motor"
             />
-            <div class="gallery-caption">Detallado de motor</div>
+            <div class="gallery-caption hidden" id="gallery-caption">Detallado de motor</div>
           </div>
         </div>
       </div>

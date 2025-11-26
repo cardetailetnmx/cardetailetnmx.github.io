@@ -278,6 +278,8 @@ nav {
 }
 
 .package-body {
+  display: grid;
+  align-content: space-evenly;
   padding: 2rem;
   flex-grow: 1;
 }
@@ -300,6 +302,12 @@ nav {
   flex-shrink: 0;
 }
 
+.time{
+  color: #cccccc6c;
+  text-align: center;
+  font-size: 0.7rem;
+}
+
 /* --- PRICING TABLE --- */
 .pricing-table-container {
   overflow-x: auto; /* Scroll interno solo para la tabla */
@@ -308,7 +316,7 @@ nav {
   padding: 1rem;
   -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
   width: 100%;
-    position: relative; /* Necesario para que el pseudo-elemento ::after se posicione correctamente */
+  position: relative; /* Necesario para que el pseudo-elemento ::after se posicione correctamente */
 }
 
 table {
@@ -335,37 +343,48 @@ td {
 
 /* Nuevo: Keyframes para la animación de deslizamiento */
 @keyframes scrollNudge {
-    0% { transform: translateX(0); }
-    20% { transform: translateX(-10px); } /* Desliza 10px a la izquierda */
-    40% { transform: translateX(5px); } /* Vuelve un poco a la derecha */
-    60% { transform: translateX(-5px); } /* Desliza otra vez */
-    80% { transform: translateX(0); }
-    100% { transform: translateX(0); }
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-10px);
+  } /* Desliza 10px a la izquierda */
+  40% {
+    transform: translateX(5px);
+  } /* Vuelve un poco a la derecha */
+  60% {
+    transform: translateX(-5px);
+  } /* Desliza otra vez */
+  80% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 #pricing table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 600px;
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
 }
-
 
 /* Media Query para activar el indicador solo en pantallas pequeñas */
 @media (max-width: 768px) {
-    .pricing-table-container::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        height: 100%;
-        width: 30px; /* Ancho del fade */
-        
-        /* El degradado va de transparente a tu color de fondo de tarjeta, simulando que el contenido se oculta */
-        /* background: linear-gradient(to left, var(--bg-card), rgba(20, 20, 20, 0));  */
-        
-        pointer-events: none; /* Asegura que la sombra no bloquee el scroll */
-        z-index: 20; /* Asegura que esté sobre la tabla */
-    }
+  .pricing-table-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 30px; /* Ancho del fade */
+
+    /* El degradado va de transparente a tu color de fondo de tarjeta, simulando que el contenido se oculta */
+    /* background: linear-gradient(to left, var(--bg-card), rgba(20, 20, 20, 0));  */
+
+    pointer-events: none; /* Asegura que la sombra no bloquee el scroll */
+    z-index: 20; /* Asegura que esté sobre la tabla */
+  }
 }
 
 /* --- GALLERY --- */
@@ -397,12 +416,20 @@ td {
   color: white;
   padding: 0.5rem;
   text-align: center;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out;
+  max-height: 100px;
+}
+
+.hidden{
+  opacity: 0;
+  max-height: 0;
 }
 
 /* --- CONTACT & FOOTER --- */
 footer {
-        display: grid;
-    justify-content: center;
+  display: grid;
+  justify-content: center;
 
   background-color: black;
   padding: 4rem 0 2rem;
@@ -440,73 +467,70 @@ footer {
   z-index: 100;
 }
 
-.redes-sociales{
-    display: grid;
-    grid-auto-flow: column;
-    justify-content: space-evenly;
+.redes-sociales {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-evenly;
 
-    margin-top: 1rem; 
-    color: #aaa; 
-    font-size: 1.5rem;
+  margin-top: 1rem;
+  color: #aaa;
+  font-size: 1.5rem;
 }
 
 /* --- NUEVA SECCIÓN: TESTIMONIALS --- */
 #testimonials {
-    padding: var(--spacing-section) 0;
-    background-color: #111111; /* Un tono ligeramente diferente para variar la textura */
+  padding: var(--spacing-section) 0;
+  background-color: #111111; /* Un tono ligeramente diferente para variar la textura */
 }
 
 .testimonials-grid {
-    display: grid;
-    /* Responsive Grid: mínimo de 280px por columna */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-    gap: 1.5rem;
+  display: grid;
+  /* Responsive Grid: mínimo de 280px por columna */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
 .testimonial-card {
-    background-color: var(--bg-card); /* Fondo oscuro de tarjeta */
-    padding: 2rem;
-    border-radius: 10px;
-    border-left: 4px solid var(--primary-color); /* Franja de acento dorado/ámbar */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-    height: 100%; /* Asegura que todas las tarjetas tengan la misma altura si el grid lo permite */
+  background-color: var(--bg-card); /* Fondo oscuro de tarjeta */
+  padding: 2rem;
+  border-radius: 10px;
+  border-left: 4px solid var(--primary-color); /* Franja de acento dorado/ámbar */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  height: 100%; /* Asegura que todas las tarjetas tengan la misma altura si el grid lo permite */
 }
 
 .testimonial-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 .testimonial-quote {
-    font-style: italic;
-    color: #ccc;
-    margin-bottom: 1rem;
-    font-size: 0.95rem;
+  font-style: italic;
+  color: #ccc;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
 }
 
 .testimonial-rating {
-    color: var(--primary-color);
-    font-size: 1.3rem; /* Estrellas grandes y doradas */
-    margin-bottom: 1rem;
+  color: var(--primary-color);
+  font-size: 1.3rem; /* Estrellas grandes y doradas */
+  margin-bottom: 1rem;
 }
 
 .testimonial-author {
-    font-weight: 800;
-    color: white;
-    display: block;
-    margin-top: 1rem;
-    font-size: 1rem;
+  font-weight: 800;
+  color: white;
+  display: block;
+  margin-top: 1rem;
+  font-size: 1rem;
 }
 
 .testimonial-source {
-    font-weight: 400;
-    color: var(--text-gray);
-    font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--text-gray);
+  font-size: 0.85rem;
 }
-
-
-
 
 /* --- MEDIA QUERIES (Correcciones Responsive) --- */
 @media (max-width: 768px) {
@@ -547,9 +571,13 @@ footer {
   .section-title {
     font-size: 1.8rem;
   }
-    #pricing table {
+  #pricing table {
     /* PROPIEDAD DE ANIMACIÓN */
-    animation: scrollNudge 4s ease-in-out 1s infinite; 
+    animation: scrollNudge 4s ease-in-out 1s infinite;
+  }
+  .hidden{
+  opacity: 1;
+  max-height: 300px;
 }
 }
 
@@ -562,7 +590,7 @@ footer {
   .hero-content h1 {
     font-size: 1.5rem;
   } /* Texto más pequeño */
-  .hero-content p{
+  .hero-content p {
     font-size: 1rem;
   }
 
