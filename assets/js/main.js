@@ -54,7 +54,7 @@ whatsappLinks.forEach(link => {
 
         Swal.fire({
             title: '¿Contactar al negocio?',
-            text: "Saldrás de la página para abrir WhatsApp y agendar tu cita con Car Detailents.",
+            text: "Saldrás de la página para abrir WhatsApp y agendar tu cita con Car Detailent.",
             icon: 'info',
             iconColor: '#FFC107', // Ícono color ámbar
             showCancelButton: true,
