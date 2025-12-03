@@ -20,7 +20,8 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden; /* CORRECCIÓN: Previene scroll horizontal */
+  overflow-x: hidden;
+  /* CORRECCIÓN: Previene scroll horizontal */
 }
 
 body {
@@ -28,7 +29,8 @@ body {
   background-color: var(--bg-dark);
   color: var(--text-light);
   line-height: 1.6;
-  overflow-x: hidden; /* CORRECCIÓN: Asegura que nada se salga del ancho */
+  overflow-x: hidden;
+  /* CORRECCIÓN: Asegura que nada se salga del ancho */
   width: 100%;
 }
 
@@ -47,9 +49,11 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
 ul {
   list-style: none;
 }
+
 img {
   max-width: 100%;
   display: block;
@@ -57,10 +61,12 @@ img {
 
 /* --- UTILITIES --- */
 .container {
-  width: 100%; /* Ajuste para móviles */
+  width: 100%;
+  /* Ajuste para móviles */
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px; /* Padding seguro */
+  padding: 0 20px;
+  /* Padding seguro */
 }
 
 .btn {
@@ -88,7 +94,8 @@ img {
 
 .section-title {
   text-align: center;
-  font-size: 2.2rem; /* Ligeramente más pequeño para seguridad */
+  font-size: 2.2rem;
+  /* Ligeramente más pequeño para seguridad */
   margin-bottom: 1rem;
   word-wrap: break-word;
 }
@@ -163,7 +170,8 @@ nav {
   flex-direction: column;
   cursor: pointer;
   gap: 5px;
-  z-index: 1001; /* Botón sobre el menú */
+  z-index: 1001;
+  /* Botón sobre el menú */
 }
 
 .bar {
@@ -176,18 +184,21 @@ nav {
 .hamburger.toggle .bar:nth-child(1) {
   transform: rotate(-45deg) translate(-5px, 6px);
 }
+
 .hamburger.toggle .bar:nth-child(2) {
   opacity: 0;
 }
+
 .hamburger.toggle .bar:nth-child(3) {
   transform: rotate(45deg) translate(-5px, -6px);
 }
 
 /* --- HERO SECTION --- */
 #hero {
-  min-height: 100vh; /* min-height es mejor para evitar cortes en landscape */
+  min-height: 100vh;
+  /* min-height es mejor para evitar cortes en landscape */
   background: linear-gradient(var(--bg-overlay), var(--bg-overlay)),
-    url("../img/principal_desktop.png");
+    url("../img/principal_desktop_v2.png");
 
   background-size: cover;
   background-repeat: no-repeat;
@@ -198,11 +209,22 @@ nav {
   padding: 80px 0 40px 0;
 }
 
+@supports(background-image: url('data:image/webp;base64,UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAgAwB')) {
+  #hero {
+    /* Sobrescribe el PNG de pantalla pequeña con el WebP de pantalla pequeña */
+    background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('../img/principal_desktop.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
 .hero-content h1 {
   font-size: 2.8rem;
   margin-bottom: 1rem;
   line-height: 1.2;
-  word-break: break-word; /* CORRECCIÓN: Evita desborde de textos largos */
+  word-break: break-word;
+  /* CORRECCIÓN: Evita desborde de textos largos */
 }
 
 .hero-content h1 span {
@@ -223,44 +245,51 @@ nav {
 
 /* --- NUEVA SECCIÓN: VIDEO INTRO --- */
 #video-intro {
-    padding: var(--spacing-section) 0;
-    background-color: var(--bg-dark); /* Color de fondo principal */
-    text-align: center;
+  padding: var(--spacing-section) 0;
+  background-color: var(--bg-dark);
+  /* Color de fondo principal */
+  text-align: center;
 }
 
 .video-wrapper {
-    position: relative;
-    padding-bottom: 100vh; 
-    overflow: hidden;
-    max-height: 100vh;
-    /* CAMBIO CLAVE para ESCRITORIO: Este define el tamaño máximo */
-    max-width: 100vh; /* Incrementado ligeramente a 400px para una mejor visualización */
-    margin: 0 auto; /* Centra la ventana en el escritorio */
-    border-radius: 10px; /* Bordes redondeados para un look más pulido */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra sutil */
+  position: relative;
+  padding-bottom: 100vh;
+  overflow: hidden;
+  max-height: 100vh;
+  /* CAMBIO CLAVE para ESCRITORIO: Este define el tamaño máximo */
+  max-width: 100vh;
+  /* Incrementado ligeramente a 400px para una mejor visualización */
+  margin: 0 auto;
+  /* Centra la ventana en el escritorio */
+  border-radius: 10px;
+  /* Bordes redondeados para un look más pulido */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  /* Sombra sutil */
 }
 
 .video-wrapper iframe,
 .video-wrapper video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    background-color: black; /* Fondo negro mientras carga */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: black;
+  /* Fondo negro mientras carga */
 }
 
 /* Título de sección si lo necesitas para el video */
 #video-intro .section-title {
-    margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 /* Media Query para pantallas más pequeñas, el video puede ocupar más ancho */
 @media (max-width: 768px) {
-    .video-wrapper {
-        max-width: 90%; /* En móviles, puede ocupar casi todo el ancho */
-    }
+  .video-wrapper {
+    max-width: 90%;
+    /* En móviles, puede ocupar casi todo el ancho */
+  }
 }
 
 /* --- GRIDS & CARDS --- */
@@ -304,7 +333,8 @@ nav {
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 8px;
-  overflow: hidden; /* Importante para que el contenido no salga */
+  overflow: hidden;
+  /* Importante para que el contenido no salga */
   display: flex;
   flex-direction: column;
 }
@@ -346,11 +376,11 @@ nav {
   flex-shrink: 0;
 }
 
-.package-list .li--empty::before{
+.package-list .li--empty::before {
   content: "";
 }
 
-.time{
+.time {
   color: #cccccc6c;
   text-align: center;
   font-size: 0.7rem;
@@ -358,19 +388,23 @@ nav {
 
 /* --- PRICING TABLE --- */
 .pricing-table-container {
-  overflow-x: auto; /* Scroll interno solo para la tabla */
+  overflow-x: auto;
+  /* Scroll interno solo para la tabla */
   background: var(--bg-card);
   border-radius: 10px;
   padding: 1rem;
-  -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+  -webkit-overflow-scrolling: touch;
+  /* Scroll suave en iOS */
   width: 100%;
-  position: relative; /* Necesario para que el pseudo-elemento ::after se posicione correctamente */
+  position: relative;
+  /* Necesario para que el pseudo-elemento ::after se posicione correctamente */
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 600px; /* Fuerza el scroll horizontal interno, no rompe la página */
+  min-width: 600px;
+  /* Fuerza el scroll horizontal interno, no rompe la página */
 }
 
 th,
@@ -384,6 +418,7 @@ th {
   color: var(--primary-color);
   font-size: 0.9rem;
 }
+
 td {
   color: #ddd;
   font-size: 0.9rem;
@@ -394,18 +429,26 @@ td {
   0% {
     transform: translateX(0);
   }
+
   20% {
     transform: translateX(-10px);
-  } /* Desliza 10px a la izquierda */
+  }
+
+  /* Desliza 10px a la izquierda */
   40% {
     transform: translateX(5px);
-  } /* Vuelve un poco a la derecha */
+  }
+
+  /* Vuelve un poco a la derecha */
   60% {
     transform: translateX(-5px);
-  } /* Desliza otra vez */
+  }
+
+  /* Desliza otra vez */
   80% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(0);
   }
@@ -425,13 +468,16 @@ td {
     top: 0;
     right: 0;
     height: 100%;
-    width: 30px; /* Ancho del fade */
+    width: 30px;
+    /* Ancho del fade */
 
     /* El degradado va de transparente a tu color de fondo de tarjeta, simulando que el contenido se oculta */
     /* background: linear-gradient(to left, var(--bg-card), rgba(20, 20, 20, 0));  */
 
-    pointer-events: none; /* Asegura que la sombra no bloquee el scroll */
-    z-index: 20; /* Asegura que esté sobre la tabla */
+    pointer-events: none;
+    /* Asegura que la sombra no bloquee el scroll */
+    z-index: 20;
+    /* Asegura que esté sobre la tabla */
   }
 }
 
@@ -469,7 +515,7 @@ td {
   max-height: 100px;
 }
 
-.hidden{
+.hidden {
   opacity: 0;
   max-height: 0;
 }
@@ -528,7 +574,8 @@ footer {
 /* --- NUEVA SECCIÓN: TESTIMONIALS --- */
 #testimonials {
   padding: var(--spacing-section) 0;
-  background-color: #111111; /* Un tono ligeramente diferente para variar la textura */
+  background-color: #111111;
+  /* Un tono ligeramente diferente para variar la textura */
 }
 
 .testimonials-grid {
@@ -539,13 +586,16 @@ footer {
 }
 
 .testimonial-card {
-  background-color: var(--bg-card); /* Fondo oscuro de tarjeta */
+  background-color: var(--bg-card);
+  /* Fondo oscuro de tarjeta */
   padding: 2rem;
   border-radius: 10px;
-  border-left: 4px solid var(--primary-color); /* Franja de acento dorado/ámbar */
+  border-left: 4px solid var(--primary-color);
+  /* Franja de acento dorado/ámbar */
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
-  height: 100%; /* Asegura que todas las tarjetas tengan la misma altura si el grid lo permite */
+  height: 100%;
+  /* Asegura que todas las tarjetas tengan la misma altura si el grid lo permite */
 }
 
 .testimonial-card:hover {
@@ -562,7 +612,8 @@ footer {
 
 .testimonial-rating {
   color: var(--primary-color);
-  font-size: 1.3rem; /* Estrellas grandes y doradas */
+  font-size: 1.3rem;
+  /* Estrellas grandes y doradas */
   margin-bottom: 1rem;
 }
 
@@ -588,21 +639,34 @@ footer {
       url("../img/principal_mobile.png");
   }
 
+  @supports(background-image: url('data:image/webp;base64,UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAgAwB')) {
+    #hero {
+      /* Sobrescribe el PNG de pantalla pequeña con el WebP de pantalla pequeña */
+      background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('../img/principal_mobile.webp');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
   .hamburger {
     display: flex;
   }
 
   .nav-links {
-    position: fixed; /* Cambiado de absolute a fixed para mejor control */
+    position: fixed;
+    /* Cambiado de absolute a fixed para mejor control */
     top: 0;
     right: 0;
     height: 100vh;
-    width: 75%; /* Menú no ocupa toda la pantalla para dar sensación de 'drawer' */
+    width: 75%;
+    /* Menú no ocupa toda la pantalla para dar sensación de 'drawer' */
     background-color: #000;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transform: translateX(100%); /* Sale por la derecha */
+    transform: translateX(100%);
+    /* Sale por la derecha */
     transition: transform 0.3s ease-in-out;
     border-left: 1px solid #333;
     z-index: 999;
@@ -616,28 +680,35 @@ footer {
   .hero-content h1 {
     font-size: 2.2rem;
   }
+
   .section-title {
     font-size: 1.8rem;
   }
+
   #pricing table {
     /* PROPIEDAD DE ANIMACIÓN */
     animation: scrollNudge 4s ease-in-out 1s infinite;
   }
-  .hidden{
-  opacity: 1;
-  max-height: 300px;
-}
+
+  .hidden {
+    opacity: 1;
+    max-height: 300px;
+  }
 }
 
 /* CORRECCIÓN: Pantallas muy pequeñas (300px - 360px) */
 @media (max-width: 380px) {
   .container {
     padding: 0 15px;
-  } /* Menos padding lateral */
+  }
+
+  /* Menos padding lateral */
 
   .hero-content h1 {
     font-size: 1.5rem;
-  } /* Texto más pequeño */
+  }
+
+  /* Texto más pequeño */
   .hero-content p {
     font-size: 1rem;
   }
@@ -645,21 +716,25 @@ footer {
   .packages-grid,
   .benefits-grid,
   .gallery-grid {
-    grid-template-columns: 1fr; /* Forzar 1 columna al 100% */
+    grid-template-columns: 1fr;
+    /* Forzar 1 columna al 100% */
   }
 
   .benefit-card,
   .package-body,
   .package-header {
-    padding: 1.5rem 1rem; /* Reducir padding interno de tarjetas */
+    padding: 1.5rem 1rem;
+    /* Reducir padding interno de tarjetas */
   }
+
 }
 
 /* sweetalert */
 
 /* Estilos personalizados para que SweetAlert coincida con tu diseño */
 div:where(.swal2-container) div:where(.swal2-popup) {
-  background: #141414 !important; /* Tu color de fondo de tarjetas */
+  background: #141414 !important;
+  /* Tu color de fondo de tarjetas */
   border: 1px solid #333;
   border-radius: 10px;
 }
@@ -678,7 +753,8 @@ div:where(.swal2-html-container) {
 
 /* Botón de Confirmar (Estilo Premium) */
 div:where(.swal2-actions) button.swal2-confirm {
-  background-color: #ffc107 !important; /* Tu color primario */
+  background-color: #ffc107 !important;
+  /* Tu color primario */
   color: #000 !important;
   font-weight: 800 !important;
   text-transform: uppercase;
