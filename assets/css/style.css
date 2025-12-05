@@ -165,6 +165,58 @@ nav {
   color: var(--primary-color);
 }
 
+/* --- ESTILOS DE LA SEÑAL DE ATENCIÓN (CUE) --- */
+
+.header-cue {
+    position: absolute;
+    bottom: 0.2em; /* Ajusta la posición vertical respecto al header */
+    left: 3em; /* Ajusta la posición horizontal para apuntar a los enlaces */
+    z-index: 10000;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+.header-cue.hidden {
+    opacity: 0;
+}
+
+/* Tooltip / Burbuja */
+.cue-text {
+    background-color: var(--primary-color);
+    color: black;
+    font-size: 0.9rem;
+    font-weight: 800;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    animation: pulse 1.5s infinite; /* Animación de pulsación para la burbuja */
+}
+
+/* Triángulo/Flecha */
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid var(--primary-color);
+    margin: 0 auto;
+    animation: bounce-arrow 1.2s infinite; /* Animación de rebote para la flecha */
+}
+
+/* --- KEYFRAMES DE LA ANIMACIÓN --- */
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes bounce-arrow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(3px); }
+}
+
+    
+
 .hamburger {
   display: none;
   flex-direction: column;
@@ -315,7 +367,7 @@ nav {
 
 .benefit-card {
   background-color: var(--bg-card);
-  padding: 2rem;
+  padding: 2rem 0.8em;
   border-radius: 10px;
   text-align: center;
   border: 1px solid var(--border-color);
