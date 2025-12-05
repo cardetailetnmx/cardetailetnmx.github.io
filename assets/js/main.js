@@ -17,6 +17,26 @@ links.forEach(link => {
     });
 });
 
+//TOOLTIP
+// Variable global para la señal
+const headerCue = document.getElementById('header-cue');
+
+// Función que maneja el desplazamiento
+function handleScrollCue() {
+    // Si el scroll vertical es mayor a 50 píxeles
+    if (window.scrollY > 50) {
+        if (headerCue && !headerCue.classList.contains('hidden')) {
+            // Oculta la burbuja añadiendo la clase 'hidden'
+            headerCue.classList.add('hidden');
+        }
+    } else if (window.scrollY <= 50){
+        headerCue.classList.remove('hidden');
+    }
+}
+
+// Inicializa el listener
+window.addEventListener('scroll', handleScrollCue);
+
 // Scroll Reveal
 const revealElements = document.querySelectorAll('.reveal');
 const revealCallback = (entries, observer) => {
