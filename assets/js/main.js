@@ -29,7 +29,7 @@ function handleScrollCue() {
             // Oculta la burbuja añadiendo la clase 'hidden'
             headerCue.classList.add('hidden');
         }
-    } else if (window.scrollY <= 50){
+    } else if (window.scrollY <= 50) {
         headerCue.classList.remove('hidden');
     }
 }
@@ -52,9 +52,9 @@ revealElements.forEach(el => revealObserver.observe(el));
 
 
 // typed de inicio
- var typed = new Typed("#typed-text", {
+var typed = new Typed("#typed-text", {
     strings: [
-        "El detallado automotriz premium que va hasta tu domicilio en Toluca. Sin costo extra, porque tu tiempo es valioso.",
+        "Visítenos en nuestro estudio exclusivo en Toluca o solicite nuestra atención personalizada a domicilio. Compromiso inigualable con la estética de su vehículo.",
     ],
     typeSpeed: 30, // Velocidad de escritura
     startDelay: 1000, // Retraso antes de empezar a escribir
@@ -68,7 +68,7 @@ revealElements.forEach(el => revealObserver.observe(el));
 const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
 
 whatsappLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
+    link.addEventListener('click', function (e) {
         e.preventDefault(); // Evita que el enlace abra la página inmediatamente
         const targetUrl = this.href;
 
@@ -93,22 +93,22 @@ whatsappLinks.forEach(link => {
 });
 
 // 1. Selecciona TODAS las tarjetas contenedoras.
-const contenedores = document.querySelectorAll('#gallery_container'); 
+const contenedores = document.querySelectorAll('#gallery_container');
 
 contenedores.forEach(tarjeta => {
-    
+
     // 2. Busca el elemento de texto específico DENTRO de la tarjeta actual
     const textoEspecifico = tarjeta.querySelector('#gallery-caption');
 
     // --- AL ENTRAR (MUESTRA) ---
     tarjeta.addEventListener('mouseenter', () => {
         // Añade la clase que muestra el texto (ej. quita 'hidden')
-        textoEspecifico.classList.remove("hidden"); 
+        textoEspecifico.classList.remove("hidden");
     });
 
     // --- AL SALIR (OCULTA) ---
     tarjeta.addEventListener('mouseleave', () => {
         // Añade la clase que oculta el texto
-        textoEspecifico.classList.add("hidden"); 
+        textoEspecifico.classList.add("hidden");
     });
 });
