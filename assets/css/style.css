@@ -848,7 +848,6 @@ footer {
 /* --- ESTILOS ESPECÍFICOS PARA PELÍCULA --- */
 .tint-grid {
     background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
-    border: 1px solid #333; /* Un borde más sutil para diferenciarlo de Velfast */
 }
 
 .pricing-table-mini {
@@ -883,8 +882,8 @@ footer {
 
 /* Ajuste de imagen para que no compita con el texto */
 .tint-grid .partnership-image img {
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.8);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.2));
 }
 
 /* --- MEDIA QUERIES (Correcciones Responsive) --- */
